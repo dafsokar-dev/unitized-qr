@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
 
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Unitized QR</title>
+
+<style>
+
+body{
+
+    font-family:Arial;
+    background:#f4f4f4;
+    text-align:center;
+    margin-top:60px;
+
+}
+
+button{
+
+    width:300px;
+    padding:18px;
+    font-size:22px;
+    border:none;
+    border-radius:12px;
+    background:#1976D2;
+    color:white;
+    cursor:pointer;
+
+}
+
+#result{
+
+    margin-top:30px;
+    font-size:22px;
+    font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📷 Unitized QR Scanner</h1>
+
+<button onclick="test()">
+
+פתח מצלמה
+
+</button>
+
+<div id="result"></div>
+
+<script>
+
+function test(){
+
+    document.getElementById("result").innerHTML =
+    "✅ GitHub Pages עובד";
+
+}
+
+</script>
+
+</body>
+</html>
