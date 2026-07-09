@@ -58,13 +58,37 @@ button{
 <div id="result"></div>
 
 <script>
+<script>
 
-function test(){
+async function test(){
 
-    document.getElementById("result").innerHTML =
-    "✅ GitHub Pages עובד";
+    try{
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+
+            video:{
+                facingMode:"environment"
+            }
+
+        });
+
+        document.getElementById("result").innerHTML =
+            "✅ המצלמה נפתחה";
+
+        stream.getTracks().forEach(track=>track.stop());
+
+    }
+
+    catch(err){
+
+        document.getElementById("result").innerHTML =
+            "❌ " + err.name + "<br>" + err.message;
+
+    }
 
 }
+
+</script>
 
 </script>
 
