@@ -76,14 +76,15 @@ encodeURIComponent(decodedText);
             qrbox: 250
         },
 
-        function(decodedText){
+       function(decodedText){
 
-            scanner.stop();
+    scanner.stop();
 
-            document.getElementById("result").innerHTML =
-                "✅ QR:<br><b>" + decodedText + "</b>";
+    window.location.href =
+    "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
+    + encodeURIComponent(decodedText);
 
-        },
+}
 
         function(errorMessage){
 
