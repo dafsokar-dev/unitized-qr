@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Unitized QR</title>
+
 <script src="https://unpkg.com/html5-qrcode"></script>
+
 <style>
 
 body{
-
-    font-family:Arial;
+    font-family:Arial,sans-serif;
     background:#f4f4f4;
     text-align:center;
-    margin-top:60px;
-      
+    margin:30px;
 }
 
 button{
-
-    width:300px;
-    padding:18px;
+    width:280px;
+    padding:16px;
     font-size:22px;
     border:none;
-    border-radius:12px;
+    border-radius:10px;
     background:#1976D2;
     color:white;
     cursor:pointer;
+}
 
+#reader{
+    width:350px;
+    margin:25px auto;
 }
 
 #result{
-
-    margin-top:30px;
+    margin-top:20px;
     font-size:22px;
     font-weight:bold;
-
 }
 
 </style>
@@ -48,67 +46,59 @@ button{
 <body>
 
 <h1>📷 Unitized QR Scanner</h1>
-<h2>גרסה 2</h2>
-<button onclick="test()">
 
+<button onclick="startScanner()">
 פתח מצלמה
-
 </button>
 
+<div id="reader"></div>
+
 <div id="result"></div>
-      <div id="reader" style="width:350px;margin:20px auto;"></div>
 
 <script>
 
-function test(){
+let scanner = null;
 
-    alert("1");
+function startScanner(){
 
     document.getElementById("result").innerHTML = "";
 
-    const scanner = new Html5Qrcode("reader");
+    if(scanner){
+        scanner.clear().catch(()=>{});
+    }
 
-    alert("2");
+    scanner = new Html5Qrcode("reader");
 
-    scanner.start().catch(function(err){
+    scanner.start(
 
-    alert("3");
-    alert(err);
-
-    document.getElementById("result").innerHTML =
-        "❌ " + err;
-
-});
-
-        { facingMode: "environment" },
+        { facingMode:"environment" },
 
         {
-            fps: 10,
-            qrbox: 250
+            fps:10,
+            qrbox:250
         },
 
         function(decodedText){
 
             scanner.stop().then(function(){
 
-                window.location.href =
-                "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
-                + encodeURIComponent(decodedText);
+                document.getElementById("result").innerHTML =
+                    "✅ QR נקרא:<br><br><b>"+decodedText+"</b>";
 
             });
 
         },
 
-        function(errorMessage){
+        function(error){
 
-            // לא עושים כלום בזמן חיפוש QR
+            // מתעלמים
 
         }
 
     ).catch(function(err){
 
         document.getElementById("result").innerHTML =
-            "❌ " + err;
+            "❌ "+err;
 
     });
 
