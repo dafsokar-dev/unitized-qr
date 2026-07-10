@@ -61,7 +61,9 @@ button{
 <script>
 function test(){
 
-    document.getElementById("result").innerHTML = "";
+    window.location.href =
+"https://dafsokar-dev.github.io/unitized-qr/?unit=" +
+encodeURIComponent(decodedText);
 
     const scanner = new Html5Qrcode("reader");
 
