@@ -64,48 +64,41 @@ function startScanner(){
     document.getElementById("result").innerHTML = "";
 
     if(scanner){
-        scanner.clear().catch(()=>{});
+        scanner.stop().catch(()=>{});
     }
 
     scanner = new Html5Qrcode("reader");
 
     scanner.start(
-
-        { facingMode:"environment" },
-
+        { facingMode: "environment" },
         {
-            fps:10,
-            qrbox:250
+            fps: 10,
+            qrbox: 250
         },
 
         function(decodedText){
 
+            document.getElementById("result").innerHTML =
+                "מעביר לאפליקציה...";
+
             scanner.stop().then(function(){
-document.getElementById("result").innerHTML =
-    "מעביר לאפליקציה...";
 
-setTimeout(function(){
-
-    window.location.href =
-    "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
-    + encodeURIComponent(decodedText);
-
-},1000);
+                window.location.href =
+                "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
+                + encodeURIComponent(decodedText);
 
             });
 
         },
 
-        function(error){
-
+        function(errorMessage){
             // מתעלמים
-
         }
 
     ).catch(function(err){
 
         document.getElementById("result").innerHTML =
-            "❌ "+err;
+            "❌ " + err;
 
     });
 
