@@ -62,11 +62,23 @@ button{
 
 function test(){
 
+    alert("1");
+
     document.getElementById("result").innerHTML = "";
 
     const scanner = new Html5Qrcode("reader");
 
-    scanner.start(
+    alert("2");
+
+    scanner.start().catch(function(err){
+
+    alert("3");
+    alert(err);
+
+    document.getElementById("result").innerHTML =
+        "❌ " + err;
+
+});
 
         { facingMode: "environment" },
 
