@@ -81,9 +81,16 @@ function startScanner(){
         function(decodedText){
 
             scanner.stop().then(function(){
+document.getElementById("result").innerHTML =
+    "מעביר לאפליקציה...";
 
-                document.getElementById("result").innerHTML =
-                    "✅ QR נקרא:<br><br><b>"+decodedText+"</b>";
+setTimeout(function(){
+
+    window.location.href =
+    "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
+    + encodeURIComponent(decodedText);
+
+},1000);
 
             });
 
