@@ -64,7 +64,7 @@ function startScanner(){
     document.getElementById("result").innerHTML = "";
 
     if(scanner){
-        scanner.stop().catch(()=>{});
+        scanner.stop().catch(function(){});
     }
 
     scanner = new Html5Qrcode("reader");
@@ -75,7 +75,6 @@ function startScanner(){
             fps: 10,
             qrbox: 250
         },
-
         function(decodedText){
 
             document.getElementById("result").innerHTML =
@@ -90,11 +89,9 @@ function startScanner(){
             });
 
         },
-
         function(errorMessage){
-            // מתעלמים
+            // ignore
         }
-
     ).catch(function(err){
 
         document.getElementById("result").innerHTML =
