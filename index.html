@@ -59,11 +59,10 @@ button{
       <div id="reader" style="width:350px;margin:20px auto;"></div>
 
 <script>
+
 function test(){
 
-    window.location.href =
-"https://dafsokar-dev.github.io/unitized-qr/?unit=" +
-encodeURIComponent(decodedText);
+    document.getElementById("result").innerHTML = "";
 
     const scanner = new Html5Qrcode("reader");
 
@@ -76,19 +75,21 @@ encodeURIComponent(decodedText);
             qrbox: 250
         },
 
-       function(decodedText){
+        function(decodedText){
 
-    scanner.stop();
+            scanner.stop().then(function(){
 
-    window.location.href =
-    "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
-    + encodeURIComponent(decodedText);
+                window.location.href =
+                "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
+                + encodeURIComponent(decodedText);
 
-}
+            });
+
+        },
 
         function(errorMessage){
 
-            // מתעלמים משגיאות בזמן חיפוש QR
+            // לא עושים כלום בזמן חיפוש QR
 
         }
 
@@ -100,6 +101,7 @@ encodeURIComponent(decodedText);
     });
 
 }
+
 </script>
 
 </body>
