@@ -61,43 +61,7 @@ let scanner = null;
 
 function startScanner(){
 
-    document.getElementById("result").innerHTML = "";
-
-    if(scanner){
-        scanner.stop().catch(function(){});
-    }
-
-    scanner = new Html5Qrcode("reader");
-
-    scanner.start(
-        { facingMode: "environment" },
-        {
-            fps: 10,
-            qrbox: 250
-        },
-        function(decodedText){
-
-            document.getElementById("result").innerHTML =
-                "מעביר לאפליקציה...";
-
-            scanner.stop().then(function(){
-
-                window.location.href =
-                "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
-                + encodeURIComponent(decodedText);
-
-            });
-
-        },
-        function(errorMessage){
-            // ignore
-        }
-    ).catch(function(err){
-
-        document.getElementById("result").innerHTML =
-            "❌ " + err;
-
-    });
+    alert("הפונקציה התחילה");
 
 }
 
