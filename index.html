@@ -68,7 +68,9 @@ function startScanner(){
     alert("2");
 
     scanner.start(
-        { facingMode: "environment" },
+       {
+    facingMode: { exact: "environment" }
+}
         {
             fps: 10,
             qrbox: 250
