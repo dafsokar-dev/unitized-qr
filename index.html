@@ -61,7 +61,29 @@ let scanner = null;
 
 function startScanner(){
 
-    alert("הפונקציה התחילה");
+    alert("1");
+
+    scanner = new Html5Qrcode("reader");
+
+    alert("2");
+
+    scanner.start(
+        { facingMode: "environment" },
+        {
+            fps: 10,
+            qrbox: 250
+        },
+        function(decodedText){
+            alert(decodedText);
+        },
+        function(error){}
+    ).catch(function(err){
+
+        alert(err);
+
+    });
+
+    alert("3");
 
 }
 
