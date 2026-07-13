@@ -123,9 +123,10 @@ async function onScanSuccess(decodedText){
 
     }catch(e){}
 
-    window.location.href =
-    "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
-    + encodeURIComponent(decodedText);
+    alert(
+  "https://script.google.com/macros/s/AKfycbwZ5FblfzjMXbZUeb0ZRLbpnIRWpK3fULj5kiUbJyzzlvjVUba51zKF0ceATs_KDFCH/exec?unit="
+  + decodedText
+);
 
 }
 
